@@ -3,7 +3,7 @@ import { SafeAreaView, Platform, StatusBar, ScrollView, StyleSheet } from "react
 
 export default function SafeAreaOnScrollView({children} : {children: React.ReactNode}) {
     return (
-      <SafeAreaView class={styles.container}>
+      <SafeAreaView style={styles.container}>
         <ScrollView style={{ backgroundColor: '#f1f1f1', padding: 20, }}>
           {children}
         </ScrollView>

@@ -5,6 +5,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Platform, SafeAreaView, ScrollView, StyleSheet, Text, View , StatusBar} from 'react-native';
 
 import Ionicons from '@expo/vector-icons/Ionicons';
+import Store from './src/screens/Store';
+import Dieta from './src/screens/Diet';
+import { Barbell } from './src/screens/Barbell';
+import { Configuracao } from './src/screens/Config';
+import HomeScreen from './src/screens/Home';
+import { NativeBaseProvider } from 'native-base';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -24,25 +30,9 @@ type UserProps = {
 
 
 
-function Barbell() {
-  return (
-    <SafeAreaOnScrollView>
-      <View style={{  }}>
-          <Text>Treino</Text>
-        </View>
-    </SafeAreaOnScrollView>
-  )
-}
 
-function Configuracao() {
-  return (
-    <SafeAreaOnScrollView>
-      <View style={{  }}>
-          <Text>Configuração</Text>
-        </View>
-    </SafeAreaOnScrollView>
-  )
-}
+
+
 
 function StackStore() {
   return (
@@ -134,9 +124,11 @@ function MyTabs() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <MyTabs />
-    </NavigationContainer>
+    <NativeBaseProvider>
+      <NavigationContainer>
+        <MyTabs />
+      </NavigationContainer>
+    </NativeBaseProvider>
   );
 }
 
