@@ -1,16 +1,15 @@
-import React from "react";
 import { View, Text } from "react-native";
 import SafeAreaOnScrollView from "../../components/Core/SafeAreaView/SafeAreaOnScrollView";
 
 
-const Barbell = () => {
+const Timer = () => {
   return (
     <SafeAreaOnScrollView>
       <View style={{  }}>
-          <Text>Barbell</Text>
+          <Text>Timer</Text>
         </View>
     </SafeAreaOnScrollView>
-  )
+  );
 }
 
-export default Barbell;
+export default Timer;

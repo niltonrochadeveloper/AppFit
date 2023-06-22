@@ -4,7 +4,8 @@ import { SafeAreaView, Platform, StatusBar, ScrollView, StyleSheet } from "react
 export default function SafeAreaOnScrollView({children} : {children: React.ReactNode}) {
     return (
       <SafeAreaView style={styles.container}>
-        <ScrollView style={{ backgroundColor: '#f1f1f1', padding: 20, }}>
+        <StatusBar backgroundColor={'#2d2d2d'} />
+        <ScrollView style={styles.scrollview}>
           {children}
         </ScrollView>
       </SafeAreaView>
@@ -14,7 +15,9 @@ export default function SafeAreaOnScrollView({children} : {children: React.React
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#008080', 
-        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+        backgroundColor: '#2d2d2d',
+    },
+    scrollview: {
+      height: '100%',
     }
 })
