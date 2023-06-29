@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import SafeAreaOnScrollView from "../../components/Core/SafeAreaView/SafeAreaOnScrollView"
-
 import { View, Text, Button, HStack, ScrollView, Flex, Pressable, Avatar } from 'native-base';
 
 //services
@@ -12,9 +10,8 @@ import { FetchAttributes } from '../../services/attributes';
 
 import { ExercisesProps } from '../../services/exercises';
 
-export default function HomeScreen() {
+const Home = ({navigation}: any) => {
 
-  const navigation = useNavigation()
 
     const user = {
       nome: 'Nilton Rocha',
@@ -28,6 +25,7 @@ export default function HomeScreen() {
     return (
       <SafeAreaOnScrollView >
 
+        
         <View px={4} py={6} >
           <Flex direction='row' justifyContent={'space-between'} alignItems={'center'}>
             <Text fontSize={16} color={'white'} >Olá, <Text fontWeight={500}>{user?.nome}</Text>,</Text>
@@ -45,3 +43,5 @@ export default function HomeScreen() {
     )
   }
 
+
+  export default Home;

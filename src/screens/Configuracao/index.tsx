@@ -7,7 +7,7 @@ const Configuracao = () => {
     return (
       <SafeAreaOnScrollView>
         <View style={{  }}>
-            <Text>Timer</Text>
+            <Text>Configuração</Text>
           </View>
       </SafeAreaOnScrollView>
     )
