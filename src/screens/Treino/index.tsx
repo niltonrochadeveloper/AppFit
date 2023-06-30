@@ -3,14 +3,14 @@ import { View, Text } from "react-native";
 import SafeAreaOnScrollView from "../../components/Core/SafeAreaView/SafeAreaOnScrollView";
 
 
-const Barbell = () => {
+const Treino = () => {
   return (
     <SafeAreaOnScrollView>
       <View style={{  }}>
-          <Text>Barbell</Text>
+          <Text>Treino</Text>
         </View>
     </SafeAreaOnScrollView>
   )
 }
 
-export default Barbell;
+export default Treino;

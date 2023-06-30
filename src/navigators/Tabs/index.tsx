@@ -2,20 +2,18 @@ import React, { useContext } from "react";
 
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Home from "../../screens/Home";
-import Dieta from "../../screens/Diet";
+import Dieta from "../../screens/Dieta";
 import Timer from "../../screens/Timer";
-import Barbell from "../../screens/Barbell";
+import Barbell from "../../screens/Treino";
 import Configuracao from "../../screens/Configuracao";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { ChevronLeftIcon } from "native-base";
 const Tab = createBottomTabNavigator();
 
 
 
 const Tabs = ({ navigation }: any) => {
-
-    
+   
 
     return (
         <Tab.Navigator screenOptions={({ route }) => ({
@@ -34,11 +32,6 @@ const Tabs = ({ navigation }: any) => {
                         size={size}
                     />
                 );
-            },
-            headerLeft: () => {
-                return (
-                    <ChevronLeftIcon onPress={() => navigation.goBack() } />
-                )
             },
             tabBarStyle: {
                 paddingTop: 10,
