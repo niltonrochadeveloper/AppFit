@@ -10,7 +10,7 @@ import { styles } from './styles'
 import { Entypo, Feather, FontAwesome, MaterialCommunityIcons, Ionicons, } from '@expo/vector-icons'
 
 
-const Onboarding = () => {
+const Registrar = () => {
 
     const [ username, setUsername ] = useState<any>('')
     const [ password, setPassword ] = useState<any>('')
@@ -22,6 +22,7 @@ const Onboarding = () => {
         setTerms(!terms);
     };
 
+     
     return (
         <SafeAreaView style={{ flex: 1, width: '100%', }}>
             <StatusBar backgroundColor="#fff" barStyle="dark-content" />
@@ -38,7 +39,11 @@ const Onboarding = () => {
                         <TextInput placeholder="Apelido (opcional)" keyboardType="email-address" leftIcon={<Icon as={Feather} name={'user'} />} onChangeText={setUsername} />
                         <TextInput placeholder="E-mail" keyboardType="email-address" leftIcon={<Icon as={Feather} name={'mail'} />} onChangeText={setUsername} />
                         <TextInput placeholder="Senha" secureTextEntry={showPassword ? false : true} leftIcon={<Icon as={Feather} name="lock" />} rightIcon={<Icon as={Feather} name={showPassword ? "eye" : "eye-off"} onPress={() => setShowPassword(!showPassword)} />} onChangeText={setPassword} />
-                        
+                        <HStack style={{ maxWidth: '80%' }}>                            
+                            <RadioInput onOptionPress={() => setTerms(!terms)} >
+                                <RadioButton value={'option1'} label="Para continuar você precisa aceitar o nossos termos de uso e políticas de privacidade." />
+                            </RadioInput>
+                        </HStack>
                     </VStack>
                     <View style={{ flex: 1 }} />
                     <Button colors={['#92a3fd', '#9dceff']} icon={<Icon as={Feather} name={'log-in'} color={'#fff'} />} onPress={() => {}} >Registrar</Button>
@@ -47,5 +52,5 @@ const Onboarding = () => {
     )
 }
 
+export default Registrar;
 
-export default Onboarding;

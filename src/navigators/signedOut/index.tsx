@@ -5,6 +5,8 @@ import Login from "../../screens/Login";
 
 
 import Onboarding from "../../screens/Onboarding";
+import Registrar from "../../screens/Registrar";
+
 import { SignOutParamsList } from "./types";
 
 const Stack = createNativeStackNavigator<SignOutParamsList>()
@@ -18,6 +20,7 @@ const SignOut = () => {
                 
             }}>
                 <Stack.Screen name="login" component={Login} />
+                <Stack.Screen name="registrar" component={Registrar} />
                 <Stack.Screen name="onboarding" component={Onboarding} />
                 <Stack.Screen name="areaLogada" component={Home} />
             </Stack.Navigator>
