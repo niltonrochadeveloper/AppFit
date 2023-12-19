@@ -7,13 +7,14 @@ import Timer from "../../screens/Timer";
 import Barbell from "../../screens/Barbell";
 import Configuracao from "../../screens/Configuracao";
 
+
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { ChevronLeftIcon } from "native-base";
 const Tab = createBottomTabNavigator();
 
 
 
-const Tabs = ({ navigation }: any) => {
+const Tabs = () => {
 
     
 
@@ -35,17 +36,12 @@ const Tabs = ({ navigation }: any) => {
                     />
                 );
             },
-            headerLeft: () => {
-                return (
-                    <ChevronLeftIcon onPress={() => navigation.goBack() } />
-                )
-            },
             tabBarStyle: {
                 paddingTop: 10,
                 paddingBottom: 10,
                 height: 60,
                 position: 'absolute',
-                bottom: 16,
+                bottom: 22,
                 marginHorizontal: 16,
                 borderRadius: 12,
             },
@@ -56,7 +52,7 @@ const Tabs = ({ navigation }: any) => {
         <Tab.Screen name="Timer" component={Timer} options={{ title: 'Timer', }} />
         <Tab.Screen name="Barbell" component={Barbell} options={{ title: 'Treino', }} />
         <Tab.Screen name="Diet" component={Dieta} options={{ title: 'Dieta' }} />
-        <Tab.Screen name="Configuracao" component={Configuracao} options={{ title: 'Config' }} />
+        {/* <Tab.Screen name="Configuracao" component={Configuracao} options={{ title: 'Config' }} /> */}
       </Tab.Navigator>
     );
   }

@@ -4,8 +4,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Platform, SafeAreaView, ScrollView, StyleSheet, Text, View , StatusBar} from 'react-native';
 
 
-import { NativeBaseProvider } from 'native-base';
-
 import SignIn from './src/navigators/signedIn';
 import SignOut from './src/navigators/signedOut';
 import Routes from './src/navigators/routes';
@@ -85,9 +83,7 @@ type UserProps = {
 export default function App() {
 
   return (
-    <NativeBaseProvider>
-      <Routes />
-    </NativeBaseProvider>
+    <Routes />
   );
 }
 

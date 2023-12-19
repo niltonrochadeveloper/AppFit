@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet } from 'react-native';
+import { View, StyleSheet, Text, Pressable, Button, Alert, } from 'react-native';
 import SafeAreaOnScrollView from "../../components/Core/SafeAreaView/SafeAreaOnScrollView"
-import { View, Text, Button, HStack, ScrollView, Flex, Pressable, Avatar } from 'native-base';
 
-//services
-import { fetchData } from '../../services';
-import { FetchExercises } from '../../services/exercises';
-import { FetchAttributes } from '../../services/attributes';
 
-import { ExercisesProps } from '../../services/exercises';
+//styles
+import { styles } from './styles';
+
 
 const Home = ({navigation}: any) => {
 
@@ -25,23 +22,24 @@ const Home = ({navigation}: any) => {
     return (
       <SafeAreaOnScrollView >
 
-        
-        <View px={4} py={6} >
-          <Flex direction='row' justifyContent={'space-between'} alignItems={'center'}>
-            <Text fontSize={16} color={'white'} >Olá, <Text fontWeight={500}>{user?.nome}</Text>,</Text>
-            <Avatar />
-          </Flex>
+      <View style={{ padding: 15, }}>
+        <Text style={{ color: '#fff', marginVertical: 15, }}>{user.nome}</Text>
+        <View style={{ backgroundColor: '#373737', height: 120, marginBottom: 15, borderRadius: 8, padding: 15, }}>
+          <Text style={{ color: '#fff', }}>Timer</Text>
         </View>
-
-        <Text fontSize={'md'} color={'white'} marginX={4} marginBottom={2} marginTop={2} >Tasks</Text>
-        <Pressable onPress={() => {}} style={{ backgroundColor: '#373737', marginHorizontal: 16, borderRadius: 8, minHeight: 120, padding: 15,  }}>
-          <Text fontSize={'lg'} color={'white'} >Timer</Text>
+        <Pressable style={styles.buttonBlue} onPress={() => Alert.alert('Button with adjusted color pressed')} >
+          <Text style={{ textAlign: 'center', padding: 12,  }}>Acessar</Text>
         </Pressable>
-        <Button onPress={() => {}} backgroundColor={'#6270E4'} color={'white'} margin={4} borderRadius={8} ><Text>botão</Text></Button>
 
+      </View>
+       
+      
       </SafeAreaOnScrollView>
     )
   }
 
 
   export default Home;
+
+  // #373737 preto
+  // #6270e2 azul botão

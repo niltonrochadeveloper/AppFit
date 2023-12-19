@@ -1,11 +1,11 @@
-import { NavigationContainer } from "@react-navigation/native";
 import SignIn from "./signedIn";
 import SignOut from "./signedOut";
 
 
+
 const Routes = () => {
 
-    const isSign = true
+    const isSign = false
 
     return (
         <>
