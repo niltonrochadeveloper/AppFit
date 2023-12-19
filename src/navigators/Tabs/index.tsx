@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Home from "../../screens/Home";
-import Dieta from "../../screens/Diet";
+import Dieta from "../../screens/Dieta";
 import Timer from "../../screens/Timer";
-import Barbell from "../../screens/Barbell";
+import Barbell from "../../screens/Treino";
 import Configuracao from "../../screens/Configuracao";
 
 

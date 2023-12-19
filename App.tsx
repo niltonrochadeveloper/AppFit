@@ -82,16 +82,13 @@ type UserProps = {
 
 export default function App() {
 
+  const user = { name: 'John Doe', email: 'johndoe@example.com', isAppReady: true };
+
+  const isAppReady = user.isAppReady
+
   return (
     <Routes />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
