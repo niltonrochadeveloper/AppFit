@@ -6,8 +6,9 @@ import { Button } from "../../components/Core";
 import { StatusBar } from "expo-status-bar";
 import usePokemonApi from "../../hooks/pokemon";
 import { Image } from "expo-image"
+import { LoginProps } from "./types";
 
-const Login: FC<any> = () => {
+const Login: FC<any> = ({ navigation }: LoginProps) => {
     const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
     const { data, setPokemonName, triggerGetPokemon } = usePokemonApi()
@@ -29,10 +30,9 @@ const Login: FC<any> = () => {
                             source={item?.sprites.front_default}
                             contentFit="cover"
                             transition={1000}
-                        />))}  
-                        <TouchableOpacity onPress={() => setModalIsOpen(true)}>
-                            <Button title="Acessar" onPress={() => setModalIsOpen(true)} />
-                        </TouchableOpacity>
+                        />))} 
+                        <Button title="Cadastrar" onPress={() => navigation.navigate('Cadastro')} />
+                        <Button title="Acessar" onPress={() => setModalIsOpen(true)} />
                     </View>
                 </View>
             </View>

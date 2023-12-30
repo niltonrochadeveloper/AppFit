@@ -1,10 +1,22 @@
-import { Text as TextRN, ViewStyle } from "react-native"
+import { Text as TextRNE } from "@rneui/themed";
+import { Color, Colors, FontSize, FontSizes, FontWeight, FontWeights } from '../../../Theme/'
+import { TextProps } from './types'
+import { TextStyle } from "react-native";
 
 
-const Text = ({ text, color, style, children }: { text?: string, color?: string, style?: ViewStyle, children?: any, }) => {
+
+const Text = ({ text, color = 'default', fontSize = 'sm', fontWeight = 'regular', style, children, textAlign }: TextProps) => {
+
+    const styleMerged = {
+        color: Colors[color as Color],
+        fontSize: FontSizes[fontSize as FontSize],
+        fontWeight: FontWeights[fontWeight] as TextStyle['fontWeight'],
+        textAlign,
+        ...style
+    }
 
     return (
-        <TextRN style={[{ ...style, color, }]}  >{text ? text : children}</TextRN>
+        <TextRNE style={styleMerged}  >{text ? text : children}</TextRNE>
     )
 }
 

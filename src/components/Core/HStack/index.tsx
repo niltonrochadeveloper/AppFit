@@ -1,14 +1,36 @@
 import { ReactElement } from "react";
 import { View, ViewStyle, } from "react-native"
 
+import { HStackProps } from './types'
 
-type justifyContent = 'center' | 'space-around' | 'space-between' | 'flex-start' | 'flex-end'
-type flexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse'
+const HStack = ({ flexDirection = 'row', display = 'flex', space = 12, style, padding, justifyContent, alignItems, alignContent, paddingVertical, paddingHorizontal, children, paddingTop, paddingBottom, paddingLeft, paddingRight, margin, marginHorizontal, marginVertical, marginTop, marginBottom, marginLeft, marginRight, }: HStackProps) => {
 
-const HStack = ({ display = 'flex', gap = 12, flexDirection = 'row', style, children }: { display?: any, justifyContent?: justifyContent, flexDirection?: flexDirection, gap?: any, style?: ViewStyle, children: ReactElement | ReactElement[],}) => {
+    const styleMerged = {
+        flexDirection,
+        display,
+        justifyContent,
+        alignContent,
+        alignItems,
+        gap: style?.gap ? style.gap : space,
+        padding,
+        paddingVertical,
+        paddingHorizontal,
+        children,
+        paddingTop,
+        paddingBottom,
+        paddingLeft,
+        paddingRight,
+        margin,
+        marginHorizontal,
+        marginVertical,
+        marginTop,
+        marginBottom, marginLeft,
+        marginRight,
+        ...style
+    }
 
     return (
-        <View style={[style, { display, gap, flexDirection, }]} >
+        <View style={styleMerged} >
             {children}
         </View>
     )

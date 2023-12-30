@@ -1,23 +1,24 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import store from './src/store';
 import { Provider } from 'react-redux';
+import { NativeBaseProvider, Box, useColorMode } from "native-base";
 
-import { Platform, SafeAreaView, ScrollView, StyleSheet, Text, View , StatusBar} from 'react-native';
-
-// import SignIn from './src/navigators/signedIn';
-// import SignOut from './src/navigators/signedOut';
 import Routes from './src/navigators/routes';
+import { colorModeManager, config } from './src/Theme/config';
+import { useBaseThemes } from './src/Theme';
 
 export default function App() {
 
-  // const user = { name: 'John Doe', email: 'johndoe@example.com', isAppReady: true };
+  const { lightTheme, darkTheme } = useBaseThemes()
+  const { colorMode } = useColorMode()
 
+  // const user = { name: 'John Doe', email: 'johndoe@example.com', isAppReady: true };
   // const isAppReady = user.isAppReady
 
   return (
     <Provider store={store}>
-      <Routes />
+      <NativeBaseProvider theme={colorMode === 'light' ? lightTheme : darkTheme} config={config} colorModeManager={colorModeManager}>
+        <Routes />
+      </NativeBaseProvider>
     </Provider>
   );
 }

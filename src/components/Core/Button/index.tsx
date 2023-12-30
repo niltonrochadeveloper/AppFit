@@ -1,19 +1,26 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet, ActivityIndicator, View } from "react-native";
+import { Text, ActivityIndicator, View } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import { styles } from "./styles";
 import { ButtonProps } from "./types";
+import { Button as ButtonNB, useColorModeValue, useColorMode } from "native-base";
+import { Colors } from "../../../Theme/scheme";
 
-const CustomButton = ({ title, onPress, disabled, isLoading, children }: ButtonProps) => {
+const Button = ({ title, onPress, disabled, isLoading, style, children }: ButtonProps) => {
+  const {colorMode, setColorMode} = useColorMode()
+
+  const getGradientColors = () => {
+    return useColorModeValue(Colors.light.ButtonGradientColors, Colors.dark.ButtonGradientColors);
+  };
   return (
-    <TouchableOpacity onPress={isLoading ? undefined : onPress} disabled={disabled || isLoading}>
-      <View style={styles.buttonShadow}>
-        <LinearGradient
-          colors={['#92a3fd', '#9dceff']}
+    <LinearGradient
+          colors={getGradientColors()}
           style={styles.buttonContainer}
           start={{ x: 1, y: 0 }}
           end={{ x: 0, y: 1 }}
         >
+      <ButtonNB style={styles.buttonContainer} onPress={isLoading ? undefined : () => setColorMode(colorMode === 'light' ? 'dark' : 'light')} disabled={disabled || isLoading}>
+        
           {isLoading ? (
             <ActivityIndicator size="small" color="#fff" />
           ) : (
@@ -23,10 +30,9 @@ const CustomButton = ({ title, onPress, disabled, isLoading, children }: ButtonP
               <Text style={styles.buttonText}>{title}</Text>
             )
           )}
-        </LinearGradient>
-      </View>
-    </TouchableOpacity>
+      </ButtonNB>
+    </LinearGradient>
   );
 };
 
-export default CustomButton;
+export default Button;
