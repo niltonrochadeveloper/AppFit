@@ -6,6 +6,8 @@ import Heading from "./Heading";
 import VStack from "./VStack";
 import RadioButton from "./Input/RadioButton";
 import RadioInput from "./Input/RadioInput";
+import Icon from "./Icon";
+import HStack from "./HStack";
 
 export {
     Modal,
@@ -13,7 +15,9 @@ export {
     TextInput, 
     Heading, 
     VStack, 
+    HStack,
     Button, 
     RadioInput, 
-    RadioButton
+    RadioButton,
+    Icon
 }

@@ -1,12 +1,9 @@
-import { extendTheme  } from "native-base";
-import { config } from './config';
 import { Colors, FontSizes, FontWeights } from "./scheme";
 
-export const lightTheme = extendTheme({
+export const lightTheme = {
     colors: Colors.light,
     fontSizes: FontSizes,
     fontWeights: FontWeights,
-    config,
     components: {
         Button: {
             baseStyle: {
@@ -17,7 +14,7 @@ export const lightTheme = extendTheme({
             },
         },
     },
-});
+};
 
 
 

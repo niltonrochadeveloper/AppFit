@@ -1,17 +1,31 @@
 import React, { FC, useEffect, useState } from "react"
 import { SafeAreaView, Text, TouchableOpacity, View } from "react-native"
 import { styles } from "./styles"
+import { Entypo, Feather, FontAwesome, MaterialCommunityIcons, Ionicons, } from '@expo/vector-icons'
 import Modal from "../../components/Core/Modal";
-import { Button } from "../../components/Core";
+import { Button, TextInput, VStack } from "../../components/Core";
 import { StatusBar } from "expo-status-bar";
-import usePokemonApi from "../../hooks/pokemon";
 import { Image } from "expo-image"
 import { LoginProps } from "./types";
+import Icon from "../../components/Core/Icon";
+import { auth, signInWithEmailAndPassword } from "../../../firebase.config";
 
 const Login: FC<any> = ({ navigation }: LoginProps) => {
     const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
-    const { data, setPokemonName, triggerGetPokemon } = usePokemonApi()
+    const [ email, setEmail ] = useState<string>('')
+    const [ password, setPassword ] = useState<string>('')
+    const [ showPassword, setShowPassword ] = useState<boolean>(false)
+
+    const handleSignIn = async () => {
+        signInWithEmailAndPassword(auth, email, password).then((res) => {
+            const user = auth.currentUser
+            console.log('user logged', user)
+        }).catch((error) => {
+            console.log('user error logged', error)
+
+        })
+    }
 
     return (
         <SafeAreaView style={{ display: 'flex', flex: 1 }}>
@@ -25,19 +39,17 @@ const Login: FC<any> = ({ navigation }: LoginProps) => {
                         <TouchableOpacity onPress={() => console.log('Botão 1')} style={{ alignSelf: 'center' }}>
                             <Text>Meu Primeiro Acesso</Text>
                         </TouchableOpacity>
-                        {data && data.map((item: any) => (<Image
-                            style={{ width: 50, height: 50 }}
-                            source={item?.sprites.front_default}
-                            contentFit="cover"
-                            transition={1000}
-                        />))} 
                         <Button title="Cadastrar" onPress={() => navigation.navigate('Cadastro')} />
                         <Button title="Acessar" onPress={() => setModalIsOpen(true)} />
                     </View>
                 </View>
             </View>
             <Modal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen}>
-                <Text>OK</Text>
+                <VStack space={16}>
+                        <TextInput placeholder="E-mail" keyboardType="email-address" leftIcon={<Icon as={Feather} name={'mail'} />} onChangeText={setEmail} />
+                        <TextInput placeholder="Senha" secureTextEntry={showPassword ? false : true} keyboardType="visible-password" leftIcon={<Icon as={Feather} name="lock" />} rightIcon={<Icon as={Feather} name={showPassword ? "eye" : "eye-off"} onPress={() => setShowPassword(!showPassword)} />} onChangeText={setPassword} />
+                    <Button title="Registrar" onPress={handleSignIn} />
+                </VStack>
             </Modal>
         </SafeAreaView>
     )

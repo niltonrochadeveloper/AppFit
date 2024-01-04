@@ -19,7 +19,7 @@ export const FontSizes = {
 export const Colors = {
     light: {
         default: '#2d2d2d',
-        primary: '#ffc000',
+        primary: '#92a3fd',
         ButtonGradientColors: ['#92a3fd', '#9dceff'],
     },
     dark: {
