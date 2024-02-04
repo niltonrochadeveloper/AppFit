@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react"
 import { SafeAreaView, Text, TouchableOpacity, View } from "react-native"
 import { styles } from "./styles"
-import { Entypo, Feather, FontAwesome, MaterialCommunityIcons, Ionicons, } from '@expo/vector-icons'
+import { Feather } from '@expo/vector-icons'
 import Modal from "../../components/Core/Modal";
 import { Button, TextInput, VStack } from "../../components/Core";
 import { StatusBar } from "expo-status-bar";
@@ -39,7 +39,7 @@ const Login: FC<any> = ({ navigation }: LoginProps) => {
                         <TouchableOpacity onPress={() => console.log('Botão 1')} style={{ alignSelf: 'center' }}>
                             <Text>Meu Primeiro Acesso</Text>
                         </TouchableOpacity>
-                        <Button title="Cadastrar" onPress={() => navigation.navigate('Cadastro')} />
+                        <Button title="Cadastrar" onPress={() => navigation.navigate('Onboarding')} />
                         <Button title="Acessar" onPress={() => setModalIsOpen(true)} />
                     </View>
                 </View>

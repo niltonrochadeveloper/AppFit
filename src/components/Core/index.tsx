@@ -8,6 +8,7 @@ import RadioButton from "./Input/RadioButton";
 import RadioInput from "./Input/RadioInput";
 import Icon from "./Icon";
 import HStack from "./HStack";
+import Paginator from "./Paginator";
 
 export {
     Modal,
@@ -19,5 +20,6 @@ export {
     Button, 
     RadioInput, 
     RadioButton,
-    Icon
+    Icon,
+    Paginator,
 }

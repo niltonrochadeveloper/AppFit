@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from "../../screens/Login";
 import type { SignOutParamsList } from "./types";
 import Cadastro from "../../screens/Cadastro";
+import Onboarding from "../../screens/Onboarding";
 
 const Stack = createNativeStackNavigator<SignOutParamsList>()
 const SignOut = () => {
@@ -13,7 +14,7 @@ const SignOut = () => {
                 headerShown: false,
             }}>
                 <Stack.Screen name="Login" component={Login} />
-                <Stack.Screen name="Cadastro" component={Cadastro} />
+                <Stack.Screen name="Onboarding" component={Onboarding} />
             </Stack.Navigator>
         </NavigationContainer>
     )
