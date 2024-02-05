@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Text, } from 'react-native';
+import { View, TouchableOpacity, } from 'react-native';
+import Text from '../../Text';
 
 const RadioButton = ({ value, label }: { value: any, label?: string}) => {
     return (
-        <Text>{label}</Text>
+        <Text fontSize='xxs'>{label}</Text>
     );
   };
 

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
 
 export interface ButtonProps {
     title?: string, 
@@ -6,5 +6,5 @@ export interface ButtonProps {
     disabled?: boolean, 
     isLoading?: boolean, 
     children?: ReactNode
-
+    style?: CSSProperties
 }

@@ -1,9 +1,8 @@
 
 
 export type SignOutParamsList = {
-    login: undefined;
-    registrar: undefined;
-    onboarding: undefined;
-    cadastro: undefined;
-    areaLogada: undefined;
+    Login: undefined;
+    Onboarding: undefined;
+    Cadastro: undefined;
+    AreaLogada: undefined;
 }
