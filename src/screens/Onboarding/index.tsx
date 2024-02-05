@@ -70,6 +70,7 @@ const Onboarding = () => {
                 horizontal
                 pagingEnabled={isScrollEnabled}
                 bounces={false}
+                
                 keyExtractor={(item: any) => item.id}
                 onScroll={Animated.event([{nativeEvent: {contentOffset: {x: scrollX}}}], {useNativeDriver: false,})}
                 scrollEventThrottle={32}
