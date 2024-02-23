@@ -1,20 +1,36 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { VStack, Text, TextInput, Button, Icon, HStack } from '../../components/Core';
 import { RootState } from '../../store';
 import { Feather } from '@expo/vector-icons'
 import { KeyboardAvoidingView, Platform, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { setIsSign } from '../../store/Auth';
 
 const Welcome = () => {
+
+    const validation = {
+        username: {
+            defaultValue: ''
+        },
+        password: {
+            defaultValue: ''
+        }
+    }
+
+    const { isSign } = useSelector((state: RootState) => state.auth)
     const methods = useForm<any>()
     const [showPassword, setShowPassword] = useState<boolean>(false)
     const navigation: any = useNavigation()
 
-    const handleSignIn: any = (data: any) => {
-        // Implemente a lógica de login aqui
+    const dispatch = useDispatch()
+
+    const onSubmit: SubmitHandler<any> = (data: any) => {
+        dispatch(
+            setIsSign()
+        )
     }
 
 
@@ -26,15 +42,15 @@ const Welcome = () => {
                     <View style={{ alignItems: 'center', gap: 12 }}>
                         <Text>Olá,</Text>
                         <Text style={{ fontSize: 24, paddingTop: 4, paddingBottom: 16, fontWeight: '800' }} >Seja Bem-Vindo</Text>
-                        <TextInput placeholder="E-mail" keyboardType="email-address" leftIcon={<Icon as={Feather} name={'mail'} />} />
-                        <TextInput placeholder="Senha" secureTextEntry={!showPassword} keyboardType="visible-password" leftIcon={<Icon as={Feather} name="lock" />} rightIcon={<Icon as={Feather} name={showPassword ? "eye" : "eye-off"} onPress={() => setShowPassword(!showPassword)} />} />
+                        <TextInput {...methods.register('username')} placeholder="E-mail" keyboardType="email-address" leftIcon={<Icon as={Feather} name={'mail'} />} />
+                        <TextInput {...methods.register('password')} placeholder="Senha" secureTextEntry={!showPassword} keyboardType="visible-password" leftIcon={<Icon as={Feather} name="lock" />} rightIcon={<Icon as={Feather} name={showPassword ? "eye" : "eye-off"} onPress={() => setShowPassword(!showPassword)} />} />
                         <TouchableOpacity>
                             <Text style={{ fontSize: 12, textDecorationLine: 'underline', fontWeight: '500' }}>Esqueceu a senha?</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
                 <View style={{ paddingVertical: 16 }}>
-                    <Button title="Entrar" onPress={handleSignIn} />
+                    <Button title="Entrar" onPress={methods.handleSubmit(onSubmit)} />
                 </View>
             </KeyboardAvoidingView>
             <View style={{ gap: 12 }}>

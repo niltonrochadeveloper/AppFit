@@ -1,26 +1,31 @@
 import { View, Text, Pressable, Button, Alert, } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store';
+import { setSignOut } from '../../store/Auth';
 
 const Home = () => {
 
-  const user = {
-    nome: 'Nilton Rocha',
-    idade: 33,
-    altura: 182,
-    peso: '80,5',
-  }  
+  const user = useSelector((state: RootState) => state.user)
+
+  const dispatch = useDispatch()
+  const onSignOut = () => {
+    dispatch(
+      setSignOut()
+    )
+  }
 
   return (
-    <View style={{ padding: 15, }}>
-      <Text style={{ color: '#fff', marginVertical: 15, }}>{user.nome}</Text>
-      <View style={{ backgroundColor: '#373737', height: 120, marginBottom: 15, borderRadius: 8, padding: 15, }}>
-        <Text style={{ color: '#fff', }}>Timer</Text>
+    <SafeAreaView style={{ padding: 32 }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Text>{user.name}</Text>
+        <Pressable onPress={onSignOut} style={{ backgroundColor: 'blue', paddingVertical: 8, paddingHorizontal: 16, borderRadius: 50 }} >
+          <Text style={{ color: '#fff' }}>Sair</Text>
+        </Pressable>
       </View>
-      <Pressable onPress={() => Alert.alert('Button with adjusted color pressed')} >
-        <Text style={{ textAlign: 'center', padding: 12,  }}>Acessar</Text>
-      </Pressable>
-    </View>
+    </SafeAreaView>
   )
 }
 
 
-  export default Home;
+export default Home;

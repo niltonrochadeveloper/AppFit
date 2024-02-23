@@ -4,13 +4,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface AuthState {
   isSign: boolean;
   token: string;
-  biometrics: any[]
 }
 
 const initialState: AuthState = {
   isSign: false,
   token: '',
-  biometrics: []
 };
 
 const userSlice = createSlice({
