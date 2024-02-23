@@ -1,4 +1,4 @@
-import { Text as TextRNE } from "@gluestack-ui/themed";
+import { Text as TextRNG } from "@gluestack-ui/themed";
 import { TextProps } from './types'
 import { TextStyle } from "react-native";
 import { lightTheme } from "../../../Theme/lightTheme";
@@ -17,7 +17,7 @@ const Text = ({ text, color = 'default', fontSize = 'sm', fontWeight = 'regular'
     }
 
     return (
-        <TextRNE style={styleMerged}  >{text ? text : children}</TextRNE>
+        <TextRNG style={styleMerged}  >{text ? text : children}</TextRNG>
     )
 }
 

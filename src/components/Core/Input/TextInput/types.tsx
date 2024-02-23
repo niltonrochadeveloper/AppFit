@@ -11,6 +11,6 @@ export interface TextInputProps {
     leftIcon?: ReactElement;
     secureTextEntry?: boolean;
     rightIcon?: ReactElement;
-    onChangeText: any;
+    onChangeText?: any;
     onPress?: any;
 } 

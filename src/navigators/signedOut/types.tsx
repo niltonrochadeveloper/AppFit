@@ -5,4 +5,5 @@ export type SignOutParamsList = {
     Onboarding: undefined;
     Cadastro: undefined;
     AreaLogada: undefined;
+    Welcome: undefined;
 }

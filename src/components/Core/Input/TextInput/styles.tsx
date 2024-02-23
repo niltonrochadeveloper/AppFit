@@ -5,9 +5,8 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 12,
-    paddingVertical: 8,
-    height: 48,
-    padding: 15,
+    paddingVertical: 4,
+    height: 54,
     width: '100%',
     color: '#ada4a5',
     backgroundColor: '#f7f8f8',
@@ -15,6 +14,7 @@ export const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    marginLeft: 8,    
+    flexShrink: 1,
+    marginLeft: 8,
   }
 });

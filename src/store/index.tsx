@@ -1,14 +1,14 @@
 // store.ts
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import Auth from './Auth';
-import User from './User';
-import { pokemonApi } from '../services/pokemon';
+import auth from './Auth';
+import user from './User';
+import theme from './Theme'
 import { api } from '../services';
 
 const reducers = combineReducers({
-    Auth,
-    User,
-    pokemonApi,
+    auth,
+    user,
+    theme,
     [api.reducerPath]: api.reducer
 })
 
@@ -20,9 +20,9 @@ const store = configureStore({
     middleware: getDefaultMiddleware => {
         const middlewares = getDefaultMiddleware({ serializableCheck: false })
             .prepend(
-                // signedInStatusListener.middleware,
-                // signedOutListener.middleware
-            )
+            // signedInStatusListener.middleware,
+            // signedOutListener.middleware
+        )
             .concat(
                 api.middleware,
                 // errorHandler

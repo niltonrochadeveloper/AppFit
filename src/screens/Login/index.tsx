@@ -13,9 +13,9 @@ import { auth, signInWithEmailAndPassword } from "../../../firebase.config";
 const Login: FC<any> = ({ navigation }: LoginProps) => {
     const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
-    const [ email, setEmail ] = useState<string>('')
-    const [ password, setPassword ] = useState<string>('')
-    const [ showPassword, setShowPassword ] = useState<boolean>(false)
+    const [email, setEmail] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
+    const [showPassword, setShowPassword] = useState<boolean>(false)
 
     const handleSignIn = async () => {
         signInWithEmailAndPassword(auth, email, password).then((res) => {
@@ -29,11 +29,11 @@ const Login: FC<any> = ({ navigation }: LoginProps) => {
 
     return (
         <SafeAreaView style={{ display: 'flex', flex: 1 }}>
-            <StatusBar />      
+            <StatusBar />
             <View style={{ flex: 1, padding: 16, }}>
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                     <Text style={{ fontSize: 20, fontWeight: '600' }}>Aplicativo Fitness</Text>
-                </View>                
+                </View>
                 <View>
                     <View style={{ flexDirection: 'column', gap: 16, justifyContent: 'center' }}>
                         <TouchableOpacity onPress={() => console.log('Botão 1')} style={{ alignSelf: 'center' }}>
@@ -46,8 +46,8 @@ const Login: FC<any> = ({ navigation }: LoginProps) => {
             </View>
             <Modal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen}>
                 <VStack space={16}>
-                        <TextInput placeholder="E-mail" keyboardType="email-address" leftIcon={<Icon as={Feather} name={'mail'} />} onChangeText={setEmail} />
-                        <TextInput placeholder="Senha" secureTextEntry={showPassword ? false : true} keyboardType="visible-password" leftIcon={<Icon as={Feather} name="lock" />} rightIcon={<Icon as={Feather} name={showPassword ? "eye" : "eye-off"} onPress={() => setShowPassword(!showPassword)} />} onChangeText={setPassword} />
+                    <TextInput placeholder="E-mail" keyboardType="email-address" leftIcon={<Icon as={Feather} name={'mail'} />} onChangeText={setEmail} />
+                    <TextInput placeholder="Senha" secureTextEntry={showPassword ? false : true} keyboardType="visible-password" leftIcon={<Icon as={Feather} name="lock" />} rightIcon={<Icon as={Feather} name={showPassword ? "eye" : "eye-off"} onPress={() => setShowPassword(!showPassword)} />} onChangeText={setPassword} />
                     <Button title="Registrar" onPress={handleSignIn} />
                 </VStack>
             </Modal>
