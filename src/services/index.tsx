@@ -1,6 +1,3 @@
-// import {
-//     API_URL,
-// } from "@env";
 
 import {
     BaseQueryFn,
@@ -15,18 +12,19 @@ import {
 
 // import type { ApiResponse } from "../models/Common";
 import type { RootState } from '../store';
+import { setSignOut } from '../store/Auth';
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: '',
+    baseUrl: process.env.API_URL,
     prepareHeaders: (headers: Headers, { getState }) => {
-        // const { token } = (getState() as RootState).auth;
+        const { token } = (getState() as RootState).auth;
 
-        // headers.set("Content-type", "application/json");
-        // headers.set('Authorization', `${API_TOKEN_BASE_TYPE} ${API_TOKEN_BASE}`);
+        headers.set("Content-type", "application/json");
+        headers.set('Authorization', `${process.env.API_TOKEN_BASE_TYPE} ${process.env.API_TOKEN_BASE}`);
 
-        // if (token != "") {
-        //     headers.set('Authorization', token);
-        // }
+        if (token != "") {
+            headers.set('Authorization', token);
+        }
 
         return headers;
     },
@@ -39,39 +37,40 @@ const baseQueryWithInterceptor: BaseQueryFn<
 > = async (args, api, extraOptions) => {
     const response = await baseQuery(args, api, extraOptions);
     // const data = response.data as ApiResponse<any>;
-    // const error = response.error as FetchBaseQueryError;
+    const data: any = response.data;
+    const error = response.error as FetchBaseQueryError;
 
-    // if (error && [401, 403].includes(error.status as number)) {
-    //     const { isSignedIn } = (api.getState() as RootState).auth;
-    //     if (isSignedIn) {
-    //         api.dispatch(setSignedOut());
-    //     }
-    // }
-    // if (data && data.status == 302) {
-    //     const { id: operacaoId, opcoes, key, cpf } = data.result;
-    //     const { password } = (args as FetchArgs).body;
-    //     api.dispatch(
-    //         setTwoStep({
-    //             operacaoId,
-    //             opcoes,
-    //             key
-    //         })
-    //     );
-    //     if (cpf) {
-    //         if (password) {
-    //             api.dispatch(
-    //                 setCredentials({
-    //                     cpf,
-    //                     password
-    //                 })
-    //             );
-    //         } else {
-    //             api.dispatch(
-    //                 setCpf(cpf)
-    //             );
-    //         }
-    //     }
-    // }
+    if (error && [401, 403].includes(error.status as number)) {
+        const { isSign } = (api.getState() as RootState).auth;
+        if (isSign) {
+            api.dispatch(setSignOut());
+        }
+    }
+    if (data && data.status == 302) {
+        const { id: operacaoId, opcoes, key, cpf } = data.result;
+        const { password } = (args as FetchArgs).body;
+        // api.dispatch(
+        //     setTwoStep({
+        //         operacaoId,
+        //         opcoes,
+        //         key
+        //     })
+        // );
+        if (cpf) {
+            if (password) {
+                // api.dispatch(
+                //     setCredentials({
+                //         cpf,
+                //         password
+                //     })
+                // );
+            } else {
+                // api.dispatch(
+                //     setCpf(cpf)
+                // );
+            }
+        }
+    }
     return response;
 };
 
